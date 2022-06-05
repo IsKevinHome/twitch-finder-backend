@@ -24,7 +24,7 @@ app.use(express.static("build"));
 // Validation middleware
 app.use((req, res, next) => {
     // this can be put in a node module.
-    cron.schedule("*/2 * * * *", () => {
+    cron.schedule("* * * * *", () => {
         validateToken();
     });
     next();
