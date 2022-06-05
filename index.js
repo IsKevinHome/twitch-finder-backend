@@ -35,6 +35,7 @@ app.get("/token", (req, res) => {});
 
 // Search route
 app.get("/search/:channels", async (req, res) => {
+    getToken();
     const { channels } = req.params;
     const results = await twitchSearch(channels, CLIENT_ID);
     // console.log(results);
