@@ -10,21 +10,16 @@ require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 
 // const REDIS_PORT = process.env.PORT || 6379;
-// var client = redis.createClient(process.env.REDISCLOUD_URL, {
-//     no_ready_check: true,
-// });
+// const client = redis.createClient(REDIS_PORT);
 
-// client.connect();
-
-let redisClient;
-if (process.env.REDISCLOUD_URL) {
-    let redisURL = process.env.REDISCLOUD_URL;
-    redisClient = redis.createClient(redisURL);
-} else {
-    redisClient = redis.createClient();
-}
-
-redisClient.connect();
+const client = redis.createClient({
+    url: process.env.REDIS_URL,
+    socket: {
+        tls: true,
+        rejectUnauthorized: false,
+    },
+});
+client.connect();
 
 // MIDDLEWARE
 app.use(cors());
@@ -40,6 +35,9 @@ app.use((req, res, next) => {
     });
     next();
 });
+
+// Get token route
+app.get("/token", (req, res) => {});
 
 // Search route
 app.get("/search/:channels", async (req, res) => {
