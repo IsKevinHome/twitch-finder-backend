@@ -10,12 +10,21 @@ require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 
 // const REDIS_PORT = process.env.PORT || 6379;
-var client = redis.createClient(process.env.REDISCLOUD_URL, {
-    no_ready_check: true,
-});
+// var client = redis.createClient(process.env.REDISCLOUD_URL, {
+//     no_ready_check: true,
+// });
 
-client.connect();
-client.on("connect", () => {});
+// client.connect();
+
+let redisClient;
+if (process.env.REDISCLOUD_URL) {
+    let redisURL = url.parse(process.env.REDISCLOUD_URL);
+    redisClient = redis.createClient(redisURL);
+} else {
+    redisClient = redis.createClient();
+}
+
+redisClient.connect();
 
 // MIDDLEWARE
 app.use(cors());
