@@ -1,14 +1,14 @@
 const axios = require("axios").default;
 const redis = require("redis");
+const redisUrl = "redis://127.0.0.1:6379";
+const client = redis.createClient(redisUrl);
 
-const client = redis.createClient({
-    socket: {
-        host: process.env.host,
-        port: process.env.port,
-    },
-    password: process.env.password,
-});
-client.connect();
+async function clientConnect() {
+    console.log("connected to redis");
+    await client.connect();
+}
+
+clientConnect();
 
 async function getToken(CLIENT_ID, CLIENT_SECRET) {
     const res = axios

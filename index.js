@@ -9,15 +9,10 @@ require("dotenv").config();
 // const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
-// const REDIS_PORT = process.env.PORT || 6379;
-// const client = redis.createClient(REDIS_PORT);
-const client = redis.createClient({
-    socket: {
-        host: process.env.host,
-        port: process.env.port,
-    },
-    password: process.env.password,
-});
+const REDIS_PORT = process.env.PORT || 6379;
+const redisUrl = "redis://127.0.0.1:6379";
+const client = redis.createClient(redisUrl);
+
 client.connect();
 
 // MIDDLEWARE
