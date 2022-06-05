@@ -18,7 +18,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 
 let redisClient;
 if (process.env.REDISCLOUD_URL) {
-    let redisURL = url.parse(process.env.REDISCLOUD_URL);
+    let redisURL = process.env.REDISCLOUD_URL;
     redisClient = redis.createClient(redisURL);
 } else {
     redisClient = redis.createClient();
