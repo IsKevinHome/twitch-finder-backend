@@ -12,7 +12,13 @@ require("dotenv").config();
 // const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
-const client = redis.createClient({ url: process.env.REDISCLOUD_URL });
+const client = redis.createClient({
+    url: process.env.REDISCLOUD_URL,
+    socket: {
+        tls: true,
+        rejectUnauthorized: false,
+    },
+});
 client.connect();
 
 // MIDDLEWARE
