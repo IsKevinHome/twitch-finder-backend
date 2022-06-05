@@ -1,13 +1,8 @@
 const axios = require("axios");
 const redis = require("redis");
 
-const client = redis.createClient({
-    url: process.env.REDISCLOUD_URL,
-    socket: {
-        tls: true,
-        rejectUnauthorized: false,
-    },
-});
+const client = redis.createClient({ url: process.env.REDISCLOUD_URL });
+
 client.connect();
 
 async function getToken(CLIENT_ID, CLIENT_SECRET) {
