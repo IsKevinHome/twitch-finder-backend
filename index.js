@@ -5,19 +5,14 @@ const app = express();
 var cors = require("cors");
 var cron = require("node-cron");
 require("dotenv").config();
-const path = require("path");
 
 // const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
 const REDIS_PORT = process.env.PORT || 6379;
-const client = redis.createClient(REDIS_PORT);
-
-// async function connectRedis() {
-//     await client.connect();
-// }
-
-// connectRedis();
+var client = redis.createClient(process.env.REDISCLOUD_URL, {
+    no_ready_check: true,
+});
 
 client.connect();
 
@@ -26,8 +21,6 @@ app.use(cors());
 
 // Middleware to reference the react 'build' for heroku
 app.use(express.static("build"));
-
-app.use(express.static(path.join(__dirname, "public")));
 
 // Validation middleware
 app.use((req, res, next) => {
