@@ -9,7 +9,7 @@ require("dotenv").config();
 // const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
-const REDIS_PORT = process.env.PORT || 6379;
+// const REDIS_PORT = process.env.PORT || 6379;
 var client = redis.createClient(process.env.REDISCLOUD_URL, {
     no_ready_check: true,
 });
@@ -30,9 +30,6 @@ app.use((req, res, next) => {
     });
     next();
 });
-
-// Get token route
-app.get("/token", (req, res) => {});
 
 // Search route
 app.get("/search/:channels", async (req, res) => {
