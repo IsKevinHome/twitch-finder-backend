@@ -9,7 +9,7 @@ require("dotenv").config();
 // const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
-const client = redis.createClient({ url: process.env.REDIS_URL });
+const client = redis.createClient({ url: process.env.REDISCLOUD_URL });
 
 client.connect();
 
