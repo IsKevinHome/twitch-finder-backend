@@ -11,13 +11,8 @@ const CLIENT_ID = process.env.CLIENT_ID;
 
 // const REDIS_PORT = process.env.PORT || 6379;
 // const client = redis.createClient(REDIS_PORT);
-
 const client = redis.createClient({
     url: process.env.REDIS_URL,
-    socket: {
-        tls: true,
-        rejectUnauthorized: false,
-    },
 });
 client.connect();
 
