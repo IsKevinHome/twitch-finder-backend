@@ -35,17 +35,16 @@ app.get("/token", (req, res) => {});
 
 // Search route
 app.get("/search/:channels", async (req, res) => {
-    getToken();
     const { channels } = req.params;
     const results = await twitchSearch(channels, CLIENT_ID);
     // console.log(results);
     res.send(results);
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 app.listen(port, () => {
-    console.log("App is running on port " + port);
+    console.log(`App is running on port ${port}`);
 });
 
 // const PORT = process.env.PORT || 5000;

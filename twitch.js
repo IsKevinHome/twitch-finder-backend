@@ -54,6 +54,7 @@ async function validateToken() {
 
 async function twitchSearch(query, CLIENT_ID) {
     const access_token = await client.get("access_token");
+    console.log(access_token);
     const response = axios
         .get(`https://api.twitch.tv/helix/search/channels?query=${query}`, {
             headers: {
