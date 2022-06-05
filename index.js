@@ -15,6 +15,7 @@ var client = redis.createClient(process.env.REDISCLOUD_URL, {
 });
 
 client.connect();
+client.on("connect", () => {});
 
 // MIDDLEWARE
 app.use(cors());
