@@ -19,13 +19,8 @@ const client = redis.createClient({
         rejectUnauthorized: false,
     },
 });
+client.connect();
 
-async function clientConnect() {
-    console.log("connected to redis");
-    await client.connect();
-}
-
-clientConnect();
 // MIDDLEWARE
 app.use(cors());
 

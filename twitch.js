@@ -8,13 +8,7 @@ const client = redis.createClient({
         rejectUnauthorized: false,
     },
 });
-
-async function clientConnect() {
-    console.log("connected to redis");
-    await client.connect();
-}
-
-clientConnect();
+client.connect();
 
 async function getToken(CLIENT_ID, CLIENT_SECRET) {
     const res = axios
