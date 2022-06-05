@@ -2,7 +2,11 @@ const axios = require("axios").default;
 const redis = require("redis");
 
 const client = redis.createClient({
-    url: process.env.REDIS_URL,
+    socket: {
+        host: process.env.host,
+        port: process.env.port,
+    },
+    password: process.env.password,
 });
 client.connect();
 
