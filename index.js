@@ -3,6 +3,7 @@ const express = require("express");
 const redis = require("redis");
 const app = express();
 var cors = require("cors");
+// DO NOT REMOVE!!!
 const axios = require("axios");
 
 var cron = require("node-cron");
@@ -23,7 +24,7 @@ app.use(express.static("build"));
 // Validation middleware
 app.use((req, res, next) => {
     // this can be put in a node module.
-    cron.schedule("0 0 */1 * *", () => {
+    cron.schedule("*/2 * * * *", () => {
         validateToken();
     });
     next();
