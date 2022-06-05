@@ -3,6 +3,8 @@ const express = require("express");
 const redis = require("redis");
 const app = express();
 var cors = require("cors");
+const axios = require("axios");
+
 var cron = require("node-cron");
 require("dotenv").config();
 
@@ -10,7 +12,6 @@ require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 
 const client = redis.createClient({ url: process.env.REDISCLOUD_URL });
-
 client.connect();
 
 // MIDDLEWARE
