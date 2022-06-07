@@ -31,7 +31,9 @@ app.use((req, res, next) => {
 });
 
 // Get token route
-app.get("/token", (req, res) => {});
+app.get("/token", (req, res) => {
+    res.send("No Token Functionality at this route =)");
+});
 
 // Search route
 app.get("/search/:channels", async (req, res) => {
