@@ -67,6 +67,9 @@ async function twitchSearch(query, CLIENT_ID) {
             data = res.data.data;
             // console.log(data);
             return data;
+        })
+        .catch((e) => {
+            console.log("error from inside twitchSearch", e);
         });
     return response;
 }
