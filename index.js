@@ -40,7 +40,7 @@ app.get("/search/:channels", async (req, res) => {
     const { channels } = req.params;
     // const results = await twitchSearch(channels, CLIENT_ID);
     console.log(channels);
-    res.send("hello");
+    res.send(req.params);
 });
 
 const port = process.env.PORT || 5000;
