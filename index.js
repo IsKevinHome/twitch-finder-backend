@@ -39,7 +39,7 @@ app.get("/token", (req, res) => {
 app.get("/search/:channels", async (req, res) => {
     const { channels } = req.params;
     const results = await twitchSearch(channels, CLIENT_ID);
-    res.send(results);
+    res.json(results);
 });
 
 const port = process.env.PORT || 5000;
