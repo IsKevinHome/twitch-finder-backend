@@ -9,7 +9,7 @@ const axios = require("axios");
 var cron = require("node-cron");
 require("dotenv").config();
 
-// const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const CLIENT_ID = process.env.CLIENT_ID;
 
 const client = redis.createClient({ url: process.env.REDISCLOUD_URL });
@@ -25,7 +25,7 @@ app.use(express.static("build"));
 app.use((req, res, next) => {
     // this can be put in a node module.
     cron.schedule("* * * * *", () => {
-        validateToken();
+        validateToken(CLIENT_ID, CLIENT_SECRET);
     });
     next();
 });
@@ -42,7 +42,7 @@ app.get("/search/:channels", async (req, res) => {
     res.json(results);
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
     console.log(`App is running on port ${port}`);

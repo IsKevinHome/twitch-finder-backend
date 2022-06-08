@@ -23,7 +23,7 @@ async function getRedisToken() {
     console.log("token:", token);
 }
 
-async function validateToken() {
+async function validateToken(CLIENT_ID, CLIENT_SECRET) {
     const access_token = await client.get("access_token");
     const res = axios
         .get(`https://id.twitch.tv/oauth2/validate`, {
